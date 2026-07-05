@@ -1,0 +1,11 @@
+{
+  "name": "mygov-app-graveyard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "generate": "node scripts/fetch-and-analyze.js",
+    "dev": "node scripts/dev-server.js"
+  }
+}
