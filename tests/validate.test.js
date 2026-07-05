@@ -42,6 +42,14 @@ test('an app with an invalid status is invalid', () => {
   assert.ok(errors.some((e) => e.includes('status')));
 });
 
+test('a null element in apps is invalid instead of throwing', () => {
+  const data = validDataset();
+  data.apps.push(null);
+  const { valid, errors } = validateDataset(data);
+  assert.equal(valid, false);
+  assert.ok(errors.some((e) => e.includes('apps[1]')));
+});
+
 test('a non-array hallOfShame is invalid', () => {
   const data = validDataset();
   data.hallOfShame = null;

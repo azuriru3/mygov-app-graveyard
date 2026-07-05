@@ -25,6 +25,10 @@ export function validateDataset(data) {
     errors.push('apps must be a non-empty array');
   } else {
     data.apps.forEach((app, i) => {
+      if (!app || typeof app !== 'object') {
+        errors.push(`apps[${i}] must be an object`);
+        return;
+      }
       if (!app.appId || !app.appName) {
         errors.push(`apps[${i}] is missing appId or appName`);
       }
