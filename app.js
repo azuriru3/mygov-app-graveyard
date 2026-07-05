@@ -5,6 +5,27 @@ const STATUS_LABELS = {
   'active-abandoned': 'Abandoned (3+ years)',
 };
 
+// Malaysian date convention (DD/MM/YYYY). Uses UTC getters because
+// lastUpdated is a date-only string (e.g. "2015-04-03") with no time
+// component, so it must not shift a day depending on the viewer's timezone.
+function formatDate(dateStr) {
+  if (!dateStr) return 'unknown';
+  const d = new Date(dateStr);
+  if (Number.isNaN(d.getTime())) return 'unknown';
+  const day = String(d.getUTCDate()).padStart(2, '0');
+  const month = String(d.getUTCMonth() + 1).padStart(2, '0');
+  return `${day}/${month}/${d.getUTCFullYear()}`;
+}
+
+function formatDateTime(isoString) {
+  const d = new Date(isoString);
+  if (Number.isNaN(d.getTime())) return 'unknown';
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const time = d.toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit' });
+  return `${day}/${month}/${d.getFullYear()}, ${time}`;
+}
+
 async function loadDataset() {
   const res = await fetch('./data.json');
   if (!res.ok) throw new Error(`Failed to load data.json: ${res.status}`);
@@ -22,7 +43,7 @@ function renderSummary(summary, generatedAt) {
       <li><strong>${summary.freshCount}</strong> (${pct(summary.freshCount)}%) updated within a year</li>
       <li><strong>${summary.shutdownCount}</strong> formally shut down</li>
     </ul>
-    <p class="generated-at">Last refreshed: ${new Date(generatedAt).toLocaleString('en-MY')}</p>
+    <p class="generated-at">Last refreshed: ${formatDateTime(generatedAt)}</p>
   `;
 }
 
@@ -60,7 +81,7 @@ function renderTable(apps) {
           <td>${app.appName}</td>
           <td>${app.agency}</td>
           <td>${STATUS_LABELS[app.status]}</td>
-          <td>${app.lastUpdated ?? 'unknown'}</td>
+          <td>${formatDate(app.lastUpdated)}</td>
         </tr>
       `
     )
