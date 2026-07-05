@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-07-05T06:28:39.307Z",
+  "generatedAt": "2026-07-05T11:48:31.711Z",
   "summary": {
     "totalApps": 553,
     "shutdownCount": 52,
-    "freshCount": 119,
-    "staleCount": 126,
-    "abandonedCount": 256
+    "freshCount": 118,
+    "staleCount": 128,
+    "abandonedCount": 255
   },
   "apps": [
     {
@@ -155,17 +155,12 @@
         "iOS"
       ],
       "released": "2015-04-20",
-      "lastUpdated": "2025-08-08",
+      "lastUpdated": "2015-04-20",
       "shutdown": null,
-      "status": "active-fresh",
+      "status": "active-abandoned",
       "agency": "Unclassified",
       "isCritical": false,
-      "itunes": {
-        "trackName": "My Gin - Search for a master",
-        "currentVersionReleaseDate": "2025-08-08T06:16:49Z",
-        "averageUserRating": 0,
-        "userRatingCount": 0
-      }
+      "itunes": null
     },
     {
       "appId": "33",
@@ -984,17 +979,12 @@
         "iOS"
       ],
       "released": "2016-01-27",
-      "lastUpdated": "2026-05-06",
+      "lastUpdated": "2025-04-15",
       "shutdown": null,
-      "status": "active-fresh",
+      "status": "active-stale",
       "agency": "Unclassified",
       "isCritical": false,
-      "itunes": {
-        "trackName": "GAMMA.my",
-        "currentVersionReleaseDate": "2026-05-06T06:10:30Z",
-        "averageUserRating": 1.5625,
-        "userRatingCount": 32
-      }
+      "itunes": null
     },
     {
       "appId": "79",
@@ -1339,12 +1329,17 @@
         "iOS"
       ],
       "released": "2016-05-03",
-      "lastUpdated": "2016-05-03",
+      "lastUpdated": "2026-06-22",
       "shutdown": null,
-      "status": "active-abandoned",
+      "status": "active-fresh",
       "agency": "Unclassified",
       "isCritical": false,
-      "itunes": null
+      "itunes": {
+        "trackName": "PriceCatcher",
+        "currentVersionReleaseDate": "2026-06-22T18:28:42Z",
+        "averageUserRating": 3.0566,
+        "userRatingCount": 106
+      }
     },
     {
       "appId": "213",
@@ -1369,12 +1364,17 @@
         "iOS"
       ],
       "released": "2016-05-06",
-      "lastUpdated": "2019-08-06",
+      "lastUpdated": "2024-03-15",
       "shutdown": null,
-      "status": "active-abandoned",
+      "status": "active-stale",
       "agency": "Unclassified",
       "isCritical": false,
-      "itunes": null
+      "itunes": {
+        "trackName": "mySWCorp",
+        "currentVersionReleaseDate": "2024-03-15T13:07:44Z",
+        "averageUserRating": 0,
+        "userRatingCount": 0
+      }
     },
     {
       "appId": "219",
