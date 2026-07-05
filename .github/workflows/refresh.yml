@@ -1,4 +1,4 @@
-name: Hello Test
+name: Refresh data and deploy
 
 on:
   schedule:
