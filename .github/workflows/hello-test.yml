@@ -1,17 +1,47 @@
 name: Hello Test
+
 on:
   schedule:
     - cron: '0 3 * * 1'
   workflow_dispatch: {}
+
 permissions:
   contents: write
   pages: write
   id-token: write
+
 concurrency:
   group: pages
   cancel-in-progress: false
+
 jobs:
-  hello:
+  refresh-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello"
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Run tests
+        run: npm test
+
+      - name: Generate data.json
+        run: npm run generate
+
+      - name: Commit data.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || git commit -m "chore: refresh data.json"
+          git push
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - uses: actions/deploy-pages@v4
