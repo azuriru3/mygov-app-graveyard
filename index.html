@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyGov App Graveyard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>MyGov App Graveyard</h1>
+    <p class="subtitle">Malaysia has 500+ official government apps. How many are actually alive?</p>
+  </header>
+
+  <main>
+    <section id="summary" aria-label="Summary statistics"></section>
+
+    <section aria-label="Age distribution chart">
+      <canvas id="age-chart" height="120"></canvas>
+    </section>
+
+    <section aria-label="Hall of Shame">
+      <h2>Hall of Shame</h2>
+      <p class="section-intro">Critical apps — health, disaster response, food safety — that haven't been touched in 3+ years.</p>
+      <div id="hall-of-shame"></div>
+    </section>
+
+    <section aria-label="Full app list">
+      <h2>All tracked apps</h2>
+      <table id="app-table">
+        <thead>
+          <tr>
+            <th>App</th>
+            <th>Agency</th>
+            <th>Status</th>
+            <th>Last updated</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section aria-label="Methodology">
+      <h2>How we calculate this</h2>
+      <p>
+        Data comes from Malaysia's official
+        <a href="https://data.gov.my/data-catalogue/government_apps">GAMMA app registry</a>,
+        refreshed weekly. An app is "active-fresh" if updated within the last year,
+        "active-stale" if 1-3 years, and "active-abandoned" if 3+ years — or if no
+        update date was ever recorded. For apps on the App Store, we cross-check the
+        registry's self-reported update date against Apple's own record via the
+        public iTunes Search API, since the registry's own data isn't always
+        accurate. Hall of Shame entries are abandoned apps we've hand-tagged as
+        health, disaster-response, or food-safety related — not every old app is
+        shamed here, only ones where staleness carries real risk.
+      </p>
+      <p>
+        This is independent analysis of public data, not an official government
+        statement. Think an app is mischaracterized here?
+        <a href="https://github.com/azuriru3/mygov-app-graveyard/issues/new?template=correction.md">Open a correction</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Source on <a href="https://github.com/azuriru3/mygov-app-graveyard">GitHub</a>.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="app.js"></script>
+</body>
+</html>
